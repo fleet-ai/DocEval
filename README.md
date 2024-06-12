@@ -3,8 +3,8 @@
 This repository provides a structured framework for evaluating the performance of OCR (Optical Character Recognition) models on various tasks including Layout, Text Extraction, Table Detection, and Table Extraction. The current models supported are the Azure Layout model, Surya model, and the Table Transformer model from Microsoft Research. 
 
 <p float="left">
-  <img src="https://github.com/fleet-ai/OCR_Eval/tree/main/read_me_images/layout.png" width="400" />
-  <img src="https://github.com/fleet-ai/OCR_Eval/tree/main/read_me_images/table_extraction.png" width="400" /> 
+  <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/layout.png" width="400" />
+  <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/table_extraction.png" width="400" /> 
 </p>
 
 ## Introduction
@@ -94,8 +94,8 @@ The evaluation results, including performance metrics and visualizations, will b
 ### Layout
 
 <p float="left">
- <img src="https://github.com/fleet-ai/OCR_Eval/tree/main/read_me_images/layout_eval.png" width="400" />
- <img src="https://github.com/fleet-ai/OCR_Eval/tree/main/read_me_images/layout_eval_recall.png" width="400" /> 
+ <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/layout_eval.png" width="400" />
+ <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/layout_eval_recall.png" width="400" /> 
 </p>
 
 **Azure Average:**
@@ -114,7 +114,7 @@ The evaluation results, including performance metrics and visualizations, will b
 
 ### Text Extraction
 
-<img src="https://github.com/fleet-ai/OCR_Eval/tree/main/read_me_images/text_similarity.png" width="400" />
+<img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/text_similarity.png" width="400" />
 
 | Model | Text Similarity |
 |-------|-----------------|
@@ -123,7 +123,7 @@ The evaluation results, including performance metrics and visualizations, will b
 
 ### Table Detection
 
-<img src="https://github.com/fleet-ai/OCR_Eval/tree/main/read_me_images/table_detection.png" width="400" />
+<img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/table_detection.png" width="400" />
 
 | Model             | Average Precision (50%) | Average Recall (50%) |
 |-------------------|-------------------------|----------------------|
@@ -132,7 +132,7 @@ The evaluation results, including performance metrics and visualizations, will b
 
 ### Table Extraction
 
-<img src="https://github.com/fleet-ai/OCR_Eval/tree/main/read_me_images/table_extraction_eval.png" width="400" />
+<img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/table_extraction_eval.png" width="400" />
 
 
 ## Contributing
