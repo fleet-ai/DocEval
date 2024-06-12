@@ -146,7 +146,7 @@ NOTE: the evaluation will look in the data_ocr_results folder for OCR results. I
       ```bash
       bash git clone https://github.com/microsoft/table-transformer.git
       ```
-  - Download the weights for the detection model and the structure model.
+  - Download the weights for the detection model [here](https://drive.google.com/file/d/1iz3sdmpJkQEqFfzOSGi-_mhHIl8lGo84/view?usp=sharing) and the structure model [here](https://drive.google.com/file/d/16mBpQhi56Mhgb-FV1tC9VmeDVRj0tZiz/view?usp=sharing)
   - Save the weights in the `model_weights/table-transformer` folder with the following names:
     - `detection_pubtables1m.pth`
     - `extraction_fintabnet.pth`
@@ -154,6 +154,14 @@ NOTE: the evaluation will look in the data_ocr_results folder for OCR results. I
 ## Results
 
 The evaluation results, including performance metrics and visualizations, will be stored in the `results` directory. The results are stored in a json file, and if the visualize flag is set, the resulting jpgs with bboxes will be saved in the benchmark directory. For table detection, follow the directions [here](https://github.com/microsoft/table-transformer?tab=readme-ov-file)
+
+If you want to skip OCR and just load results from a file, you can download these files (100 samples each)and put them in data/ocr_results.
+[Azure_layout_results.pkl](https://drive.google.com/file/d/1_tu2EQtbJ9gUnoOSEqL6-iBfjVEEyI4c/view?usp=sharing)
+[Surya_layout_results.pkl](https://drive.google.com/file/d/16slRvW_VTqqIdMl6QLJD1o_QqF__QUF-/view?usp=sharing)
+[text_extraction_Azure_results.pkl](https://drive.google.com/file/d/1ZMFI0y0fuc7DQW6iEyOk0WuQnGoiyznj/view?usp=sharing)
+[text_extraction_Surya_results.pkl](https://drive.google.com/file/d/1mEgjjZoL6Pi-s_KWxG72BWAYd1un9b91/view?usp=sharing)
+[table_detection_Azure_results.pkl](https://drive.google.com/file/d/1vuSuSF6NvThaCQebzy3HdTdudtadxFNB/view?usp=sharing)
+[table_detection_Table_Transformer_results.pkl](https://drive.google.com/file/d/1DhPG4poJsYS6UGM1nEweXtlGWNH5FrIw/view?usp=sharing)
 
 
 ### Layout
