@@ -19,6 +19,6 @@ def load_huggingface_data(dataset_name, dir, max, langs = ['en']):
 if __name__ == "__main__":
     layout_bench_dataset_name = settings.LAYOUT_BENCH_DATASET_NAME
     text_extraction_dataset_name = settings.RECOGNITION_BENCH_DATASET_NAME
-    name_dir = "layout_bench"
+    name_dir = "layout_bench/publaynet"
     max = None
     load_huggingface_data(layout_bench_dataset_name, name_dir, max)
