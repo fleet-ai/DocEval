@@ -1,14 +1,12 @@
 # Document Understanding Evaluation Framework
 
-This repository provides a structured framework for evaluating the performance of Document Understanding models on various tasks including Layout, Text Extraction (OCR), Table Detection, and Table Extraction. The current models supported are the Azure Layout model, Surya model, and the Table Transformer model from Microsoft Research. 
+This repository provides a structured framework for evaluating the performance of Document Understanding models on various tasks including Layout, Text Extraction (OCR), Table Detection, and Table Extraction. The current models supported are the Azure Layout model, Surya model, and the Table Transformer model from Microsoft Research. OCR on documents is fundamental to the functioning of many apps. Given the high costs associated with commercial models and the existence of accurate open-source models, benchmarking document understanding models on a variety of tasks and datasets is important in helping organizations optimize the performance of their systems while managing their resources effectively. Evaluating the performance of document understanding models can be challenging due to the lack of standardized output formats and the variety of tasks involved. This repository aims to address these challenges by providing a canonical structure for evaluating models across different tasks, datasets, and metrics.
 
 <p float="left">
   <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/layout.png" width="400" />
   <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/table_extraction.png" width="400" /> 
 </p>
 
-
-OCR on documents is fundamental to the functioning of many apps. Given the high costs associated with commercial models and the existence of accurate open-source models, benchmarking document understanding models on a variety of tasks and datasets is important in helping organizations optimize the performance of their systems while managing their resources effectively. Evaluating the performance of document understanding models can be challenging due to the lack of standardized output formats and the variety of tasks involved. This repository aims to address these challenges by providing a canonical structure for evaluating models across different tasks, datasets, and metrics.
 
 ## Contributing
 
@@ -219,7 +217,7 @@ Table extraction focuses on extracting the content and structure of identified t
 each cell. Cell location recognition considers the layout of cells and the absolute coordinates of each cell within a document. This is the hardest output to standardize since not all models even extract table information details like the row and column span of a cell, models can make different decisions on what consistutes a row or column (both of which may be correct interpretations), and models differ in the size of the table cells they predict. Some models will default to predicting a grid while others will predict smaller bboxes around the cell content. Aligning cells in such a way that allows for a fair comparison of table contents is also challenging. The only dataset currently supported is FinTabNet from IBM. Follow directions [here](https://github.com/microsoft/table-transformer?tab=readme-ov-file) to download. I only downloaded the test set.
 
 
-## To Dos
+## To Do
 - Make evaluations faster
 - Improve table extraction
 - Add models, datasets, and evaluation tasks
