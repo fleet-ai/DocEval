@@ -61,14 +61,11 @@ python -m ocr_eval.main --evals <task> --model_names <models> --dataset_gt_name 
 Replace `<task>`, `<models>`, and `<dataset>` with the desired values.
 
 Additional flags:
-- `--dataset_root_dir`: Specify the root directory for the dataset.
+- `--dataset_root_dir`: Specify the root directory for the dataset. Will search for default directory.
 - `--model_weights_dir`: Specify the directory containing model weights.
 - `--metrics`: Specify the evaluation metrics (e.g., precision, recall, text similarity).
 - `--max_doc`: Specify the maximum number of documents to evaluate.
 - `--visualize`: Enable visualization of evaluation results.
-- `--num_workers`: Specify the number of workers for parallel processing.
-- `--batch_size`: Specify the batch size for evaluation.
-- `--eval_pool_size`: Specify the evaluation pool size.
 Example usages:
 ```bash
 python -m ocr_eval.main --evals layout --model_names Azure,Surya --dataset_gt_name publaynet --metrics precision,recall --max_doc 10 --visualize
@@ -83,13 +80,14 @@ python -m ocr_eval.main --evals table_detection --model_names Azure,Table_Transf
 python -m ocr_eval.main --evals table_extraction --model_names Azure,Table_Transformer --dataset_gt_name fintabnet --max_doc 10 --visualize
 ```
 
+
+## Data
+After cloning the repo, the relevant datasets must be downloaded and processed. The the layout and text extraction datasets can be downloaded by running the load_data script in the data folder; specify the destination directories as data/layout_bench/publaynet and data/text_extraction_bench/vik_text_extraction. For table detection, download the testing set of PubTables-1M dataset by following the directions [here](https://github.com/microsoft/table-transformer?tab=readme-ov-file) and save the PubTables-1M-Detection folder in data/table_detection_bench/pubtables folder. For table extraction, download the testing set of the FinTabNet dataset by following the directions [here](https://developer.ibm.com/exchanges/data/all/fintabnet/#use-the-dataset4) and save to data/table_extraction_bench/fintabnet/fintabnet_raw. Then run the utils/process_fintabnet.py file (from Microsoft) and save the results to data/table_extraction_bench/fintabnet/fintabnet_processed.
+
 ## Results
 
-The evaluation results, including performance metrics and visualizations, will be stored in the `results` directory. The results are stored in a json file, and if the visualize flag is set, the resulting jpgs with bboxes will be saved in the benchmark directory.
+The evaluation results, including performance metrics and visualizations, will be stored in the `results` directory. The results are stored in a json file, and if the visualize flag is set, the resulting jpgs with bboxes will be saved in the benchmark directory. For table detection, follow the directions [here](https://github.com/microsoft/table-transformer?tab=readme-ov-file)
 
-## Results
-
-The evaluation results, including performance metrics and visualizations, will be stored in the `results` directory. The results are stored in a json file, and if the visualize flag is set, the resulting jpgs with bboxes will be saved in the benchmark directory.
 
 ### Layout
 
