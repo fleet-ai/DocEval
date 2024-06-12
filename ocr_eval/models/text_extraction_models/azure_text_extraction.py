@@ -9,7 +9,7 @@ import os
 import pickle
 import pdb
 import string
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
 #NOTE Azure layout assumes figures and tabels named "Figures" and "Tables"
 # Perhaps just extract figures and tables instead of breaking
 

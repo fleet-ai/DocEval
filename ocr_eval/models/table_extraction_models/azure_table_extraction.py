@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 import json
 import pdb
 
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
 
 def cell_bbox_doc_to_table(bbox, table_bbox, img_size):
 

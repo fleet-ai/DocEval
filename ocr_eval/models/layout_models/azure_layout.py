@@ -9,7 +9,7 @@ import os
 import pickle
 import pdb
 import time
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals/ocr_eval")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
 
 class AzureLayout(OCR):
     def __init__(self, model_name: str, evals: list, layout_mapping={}, checkpoint_paths = '', results_path=os.path.join(base_dir, 'data/ocr_results/azure_results.pkl'), write_output=True):

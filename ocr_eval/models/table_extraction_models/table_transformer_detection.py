@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from ocr_eval.utils.utils import draw_color_bboxes
 import time
 
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
 
 import sys
 sys.path.append(os.path.join(base_dir, "ocr_eval/table-transformer/detr"))

@@ -53,7 +53,7 @@ class LayoutEvaluation():
         self.metrics = metrics
         self.layout_mapping = layout_mapping
         self.dataset_gt, self.dataset_images =self.load_dataset()
-        self.base_dir = os.path.join(os.getcwd().split("evals")[0], "evals/ocr_eval")
+        self.base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
         self.eval_results = {}
         if self.dataset_gt_name == "publaynet":
             self.documents = glob.glob(os.path.join(self.dataset_root_dir, "*.pdf"))

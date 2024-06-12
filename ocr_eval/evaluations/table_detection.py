@@ -17,7 +17,7 @@ from ..utils.utils import draw_color_bboxes, precision_recall
 
 
 
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals/ocr_eval")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
 def box_cxcywh_to_xyxy(x):
     x_c, y_c, w, h = x.unbind(1)
     b = [(x_c - 0.5 * w), (y_c - 0.5 * h), (x_c + 0.5 * w), (y_c + 0.5 * h)]

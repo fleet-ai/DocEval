@@ -1,0 +1,10 @@
+surya-ocr
+torch
+datasets
+tqdm
+pdf2image
+Pillow
+pytesseract
+python-dotenv
+numpy
+azure-ai-formrecognizer

@@ -18,7 +18,7 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.documentintelligence.models import AnalyzeResult
 
 from dotenv import load_dotenv
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
 
 class AzureTableDetection:
     def __init__(self, dataset_root, table_words_dir, data_type, config_file, test_max_size, batch_size, num_workers, eval_pool_size, debug, results_path, debug_save_dir=os.path.join(base_dir, 'ocr_eval/results/benchmark/table_detection'), device="cpu"):

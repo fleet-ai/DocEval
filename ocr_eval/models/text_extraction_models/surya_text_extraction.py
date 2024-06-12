@@ -14,7 +14,7 @@ import string
 
 import os
 import pickle
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
 
 class SuryaTextExtraction(OCR):
     def __init__(self, model_name: str, evals: list, results_path=os.path.join(base_dir, 'ocr_eval/data/ocr_results/surya_text_extraction.pkl'), write_output=True):

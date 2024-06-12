@@ -80,9 +80,13 @@ python -m ocr_eval.main --evals table_detection --model_names Azure,Table_Transf
 python -m ocr_eval.main --evals table_extraction --model_names Azure,Table_Transformer --dataset_gt_name fintabnet --max_doc 10 --visualize
 ```
 
+NOTE: the evaluation will look in the data_ocr_results folder for OCR results. If a pkl file is found for the model+task, it will load in the file rather than rerun OCR. 
 
 ## Data
 After cloning the repo, the relevant datasets must be downloaded and processed. The the layout and text extraction datasets can be downloaded by running the load_data script in the data folder; specify the destination directories as data/layout_bench/publaynet and data/text_extraction_bench/vik_text_extraction. For table detection, download the testing set of PubTables-1M dataset by following the directions [here](https://github.com/microsoft/table-transformer?tab=readme-ov-file) and save the PubTables-1M-Detection folder in data/table_detection_bench/pubtables folder. For table extraction, download the testing set of the FinTabNet dataset by following the directions [here](https://developer.ibm.com/exchanges/data/all/fintabnet/#use-the-dataset4) and save to data/table_extraction_bench/fintabnet/fintabnet_raw. Then run the utils/process_fintabnet.py file (from Microsoft) and save the results to data/table_extraction_bench/fintabnet/fintabnet_processed.
+
+## Table Transformer Model and Weights
+If you want to use the Table Transformer model, git clone into the ocr_eval folder, and download the weights fr the detection model and the structure model and save them in the model_weights/table-transformer folder. (I call them detection_pubtables1m.pth, extraction_fintabnet.pth)
 
 ## Results
 

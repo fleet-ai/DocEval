@@ -7,7 +7,7 @@ from ocr_eval.models.base_model import OCR
 import glob
 import pdb
 # ONLY DOES LINE TEXT PREDICTION
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
 
 class TesseractTextExtraction(OCR):
     def __init__(self, model_name: str, evals: list, results_path=os.path.join(base_dir, 'ocr_eval/data/ocr_results/tesseract_text_extraction.pkl'), write_output=True):

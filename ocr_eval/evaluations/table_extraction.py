@@ -20,7 +20,7 @@ from ocr_eval.utils import grits
 import numpy as np
 
 
-base_dir = os.path.join(os.getcwd().split("evals")[0], "evals/ocr_eval")
+base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
 
 def flatten_tensor(tensor):
     flattened = tensor.reshape(-1, tensor.shape[-1])
