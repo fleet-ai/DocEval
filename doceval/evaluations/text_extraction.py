@@ -50,7 +50,7 @@ class TextExtractionEvaluation():
         self.metrics = metrics
         print("loading dataset")
         self.dataset_gt, self.dataset_gt_images = self.load_dataset()
-        self.base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
+        self.base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval/doceval")
         self.eval_results = {}
         if self.dataset_gt_name == "vik_text_extraction_bench":
             self.documents = glob.glob(os.path.join(self.dataset_root_dir, "*.pdf"))

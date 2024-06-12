@@ -1,8 +1,8 @@
 import torch
 import argparse
 from torch.utils.data import DataLoader
-from ocr_eval.datasets.table_dataset import PDFTablesDataset, get_structure_transform, get_detection_transform
-from ocr_eval.utils.utils import collate_fn
+from doceval.datasets.table_dataset import PDFTablesDataset, get_structure_transform, get_detection_transform
+from doceval.utils.utils import collate_fn
 import os
 import json
 from tqdm import tqdm
@@ -10,13 +10,13 @@ import pdb
 import pickle
 from PIL import Image
 import matplotlib.pyplot as plt
-from ocr_eval.utils.utils import draw_color_bboxes
+from doceval.utils.utils import draw_color_bboxes
 import time
 
-base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
+base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval")
 
 import sys
-sys.path.append(os.path.join(base_dir, "ocr_eval/table-transformer/detr"))
+sys.path.append(os.path.join(base_dir, "doceval/table-transformer/detr"))
 from models import build_model
 def box_cxcywh_to_xyxy(x):
     x_c, y_c, w, h = x.unbind(1)
@@ -30,7 +30,7 @@ def rescale_bboxes(out_bbox, size):
     return b
 
 class TableTransformerDetection:
-    def __init__(self, dataset_root, table_words_dir, data_type, config_file, test_max_size, batch_size, num_workers, eval_pool_size, model_load_path, debug, results_path, debug_save_dir=os.path.join(base_dir, 'ocr_eval/results/benchmark/table_detection'), device = "cpu"):
+    def __init__(self, dataset_root, table_words_dir, data_type, config_file, test_max_size, batch_size, num_workers, eval_pool_size, model_load_path, debug, results_path, debug_save_dir=os.path.join(base_dir, 'doceval/results/benchmark/table_detection'), device = "cpu"):
         self.dataset_root = dataset_root
         self.table_words_dir = table_words_dir
         self.data_type = data_type

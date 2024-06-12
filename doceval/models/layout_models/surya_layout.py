@@ -1,4 +1,4 @@
-from ocr_eval.models.base_model import OCR
+from doceval.models.base_model import OCR
 from surya.detection import batch_text_detection
 from surya.layout import batch_layout_detection
 from surya.model.detection.segformer import load_model, load_processor
@@ -9,10 +9,10 @@ import pdb
 
 import os
 import pickle
-base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
+base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval")
 
 class SuryaLayout(OCR):
-    def __init__(self, model_name: str, evals: list, layout_mapping: {}, checkpoint_paths = [settings.LAYOUT_MODEL_CHECKPOINT, settings.LAYOUT_MODEL_CHECKPOINT], results_path=os.path.join(base_dir, 'ocr_eval/data/ocr_results/surya_layout.pkl'), write_output=True):
+    def __init__(self, model_name: str, evals: list, layout_mapping: {}, checkpoint_paths = [settings.LAYOUT_MODEL_CHECKPOINT, settings.LAYOUT_MODEL_CHECKPOINT], results_path=os.path.join(base_dir, 'doceval/data/ocr_results/surya_layout.pkl'), write_output=True):
         super().__init__(model_name, evals, layout_mapping, checkpoint_paths, results_path, write_output)
     def load_models(self):
         model = load_model(checkpoint=self.checkpoint_paths[0])

@@ -3,7 +3,7 @@ import datasets
 from surya.settings import settings
 
 def load_huggingface_data(dataset_name, dir, max, langs = ['en']):
-    base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
+    base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval/doceval")
     os.makedirs(os.path.join(base_dir, "data", dir), exist_ok=True)
     if max is None:
         dataset = datasets.load_dataset(dataset_name, split=f"train")

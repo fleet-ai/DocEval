@@ -3,8 +3,8 @@
 This repository provides a structured framework for evaluating the performance of Document Understanding models on various tasks including Layout, Text Extraction (OCR), Table Detection, and Table Extraction. The current models supported are the Azure Layout model, Surya model, and the Table Transformer model from Microsoft Research. OCR on documents is fundamental to the functioning of many apps. Given the high costs associated with commercial models and the existence of accurate open-source models, benchmarking document understanding models on a variety of tasks and datasets is important in helping organizations optimize the performance of their systems while managing their resources effectively. Evaluating the performance of document understanding models can be challenging due to the lack of standardized output formats and the variety of tasks involved. This repository aims to address these challenges by providing a canonical structure for evaluating models across different tasks, datasets, and metrics.
 
 <p float="left">
-  <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/layout.png" width="400" />
-  <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/table_extraction.png" width="400" /> 
+  <img src="https://github.com/fleet-ai/DocEval/blob/main/read_me_images/layout.png" width="400" />
+  <img src="https://github.com/fleet-ai/DocEval/blob/main/read_me_images/table_extraction.png" width="400" /> 
 </p>
 
 
@@ -83,13 +83,13 @@ The Azure Layout model is part of Azure Document Intelligence, and it performs a
 pip install -r requirements.txt
 ```
 3. Download relevant datasets, and run relevant processing scripts. (only relevant for FinTabNet)
-4. If using commercial models like Azure, create .env file in ocr_eval folder with API keys. For example, for azure, the code searches for keys as follows
+4. If using commercial models like Azure, create .env file in doceval folder with API keys. For example, for azure, the code searches for keys as follows
 ```python
 endpoint = str(os.getenv('AZURE_API_URL'))
 key = str(os.getenv('AZURE_API_KEY'))
 ```
 
-4. Clone the Table-Transformer repo into the ocr_eval folder:
+4. Clone the Table-Transformer repo into the doceval folder:
 ```bash
 https://github.com/microsoft/table-transformer.git
 ```
@@ -97,7 +97,7 @@ https://github.com/microsoft/table-transformer.git
 ### Running Evaluations
 To run evaluations, use the following command:
 ```bash
-python -m ocr_eval.main --evals <task> --model_names <models> --dataset_gt_name <dataset>
+python -m doceval.main --evals <task> --model_names <models> --dataset_gt_name <dataset>
 ```
 Replace `<task>`, `<models>`, and `<dataset>` with the desired values.
 
@@ -109,16 +109,16 @@ Additional flags:
 - `--visualize`: Enable visualization of evaluation results.
 Example usages:
 ```bash
-python -m ocr_eval.main --evals layout --model_names Azure,Surya --dataset_gt_name publaynet --metrics precision,recall --max_doc 10 --visualize
+python -m doceval.main --evals layout --model_names Azure,Surya --dataset_gt_name publaynet --metrics precision,recall --max_doc 10 --visualize
 ```
 ```bash
-python -m ocr_eval.main --evals text_extraction --model_names Azure,Surya --dataset_gt_name vik_text_extraction_bench  --max_doc 10
+python -m doceval.main --evals text_extraction --model_names Azure,Surya --dataset_gt_name vik_text_extraction_bench  --max_doc 10
 ```
 ```bash
-python -m ocr_eval.main --evals table_detection --model_names Azure,Table_Transformer --dataset_gt_name pubtables --max_doc 10 --visualize
+python -m doceval.main --evals table_detection --model_names Azure,Table_Transformer --dataset_gt_name pubtables --max_doc 10 --visualize
 ```
 ```bash
-python -m ocr_eval.main --evals table_extraction --model_names Azure,Table_Transformer --dataset_gt_name fintabnet --max_doc 10 --visualize
+python -m doceval.main --evals table_extraction --model_names Azure,Table_Transformer --dataset_gt_name fintabnet --max_doc 10 --visualize
 ```
 
 NOTE: the evaluation will look in the data_ocr_results folder for OCR results. If a pkl file is found for the model+task, it will load in the file rather than rerun OCR. 
@@ -142,7 +142,7 @@ NOTE: the evaluation will look in the data_ocr_results folder for OCR results. I
 
 ## Table Transformer Model and Weights
 1. If you want to use the Table Transformer model:
-  -  Clone repo into the `ocr_eval` folder:
+  -  Clone repo into the `doceval` folder:
       ```bash
       bash git clone https://github.com/microsoft/table-transformer.git
       ```
@@ -159,8 +159,8 @@ The evaluation results, including performance metrics and visualizations, will b
 ### Layout
 
 <p float="left">
- <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/layout_eval.png" width="400" />
- <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/layout_eval_recall.png" width="400" /> 
+ <img src="https://github.com/fleet-ai/DocEval/blob/main/read_me_images/layout_eval.png" width="400" />
+ <img src="https://github.com/fleet-ai/DocEval/blob/main/read_me_images/layout_eval_recall.png" width="400" /> 
 </p>
 
 **Azure Average:**
@@ -179,7 +179,7 @@ The evaluation results, including performance metrics and visualizations, will b
 
 ### Text Extraction
 
-<img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/text_similarity.png" width="400" />
+<img src="https://github.com/fleet-ai/DocEval/blob/main/read_me_images/text_similarity.png" width="400" />
 
 | Model | Text Similarity |
 |-------|-----------------|
@@ -188,7 +188,7 @@ The evaluation results, including performance metrics and visualizations, will b
 
 ### Table Detection
 
-<img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/table_detection.png" width="400" />
+<img src="https://github.com/fleet-ai/DocEval/blob/main/read_me_images/table_detection.png" width="400" />
 
 | Model             | Average Precision (50%) | Average Recall (50%) |
 |-------------------|-------------------------|----------------------|
@@ -197,7 +197,7 @@ The evaluation results, including performance metrics and visualizations, will b
 
 ### Table Extraction
 
-<img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/table_extraction_eval.png" width="400" />
+<img src="https://github.com/fleet-ai/DocEval/blob/main/read_me_images/table_extraction_eval.png" width="400" />
 
 
 ## Additional Information

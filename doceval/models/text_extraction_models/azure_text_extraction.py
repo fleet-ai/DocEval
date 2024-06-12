@@ -1,20 +1,20 @@
-from ocr_eval.models.base_model import OCR
+from doceval.models.base_model import OCR
 
 from azure.ai.documentintelligence import DocumentIntelligenceClient
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.documentintelligence.models import AnalyzeResult
-from ocr_eval.utils.utils import polygon_to_bbox, bbox_inch_to_dots, bbox_inch_to_pix, bbox_in_figure
+from doceval.utils.utils import polygon_to_bbox, bbox_inch_to_dots, bbox_inch_to_pix, bbox_in_figure
 
 import os
 import pickle
 import pdb
 import string
-base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
+base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval")
 #NOTE Azure layout assumes figures and tabels named "Figures" and "Tables"
 # Perhaps just extract figures and tables instead of breaking
 
 class AzureTextExtraction(OCR):
-    def __init__(self, model_name: str, evals: list, layout_mapping={}, checkpoint_paths = '', results_path=os.path.join(base_dir, 'ocr_eval/data/ocr_results/azure_results.pkl'), write_output=True):
+    def __init__(self, model_name: str, evals: list, layout_mapping={}, checkpoint_paths = '', results_path=os.path.join(base_dir, 'doceval/data/ocr_results/azure_results.pkl'), write_output=True):
         super().__init__(model_name, evals, layout_mapping, checkpoint_paths, results_path, write_output)
 
     def load_models(self, endpoint, key):

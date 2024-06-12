@@ -14,13 +14,13 @@ from PIL import Image
 from concurrent.futures import ProcessPoolExecutor
 import json
 from ..utils.utils import draw_color_bboxes, precision_recall
-from ocr_eval.utils.grits import grits_con, grits_top, grits_loc
-from ocr_eval.utils import postprocess
-from ocr_eval.utils import grits
+from doceval.utils.grits import grits_con, grits_top, grits_loc
+from doceval.utils import postprocess
+from doceval.utils import grits
 import numpy as np
 
 
-base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
+base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval/doceval")
 
 def flatten_tensor(tensor):
     flattened = tensor.reshape(-1, tensor.shape[-1])

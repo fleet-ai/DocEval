@@ -3,14 +3,14 @@ import pickle
 from PIL import Image
 import pytesseract
 from pdf2image import convert_from_path
-from ocr_eval.models.base_model import OCR
+from doceval.models.base_model import OCR
 import glob
 import pdb
 # ONLY DOES LINE TEXT PREDICTION
-base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
+base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval")
 
 class TesseractTextExtraction(OCR):
-    def __init__(self, model_name: str, evals: list, results_path=os.path.join(base_dir, 'ocr_eval/data/ocr_results/tesseract_text_extraction.pkl'), write_output=True):
+    def __init__(self, model_name: str, evals: list, results_path=os.path.join(base_dir, 'doceval/data/ocr_results/tesseract_text_extraction.pkl'), write_output=True):
         super().__init__(model_name=model_name, evals=evals, results_path=results_path, write_output=write_output)
 
     def load_models(self):
@@ -53,13 +53,13 @@ def extract_number(s):
     return int(''.join(filter(str.isdigit, s)))
 
 if __name__ == "__main__":
-    dataset_root = '/Users/judahengel/Documents/Fleet/evals/ocr_eval/data/text_extraction_bench/vik_text_extraction_bench'
+    dataset_root = '/Users/judahengel/Documents/Fleet/evals/doceval/data/text_extraction_bench/vik_text_extraction_bench'
     documents = glob.glob(os.path.join(dataset_root, "*.pdf"))
     documents = sorted(documents, key=lambda x: extract_number(x))[:20]  # Limit to the first 20 documents
 
     model_name = "Tesseract"
     evals = ['text_extraction']  # Add the desired evaluation metrics here
-    results_path = os.path.join(base_dir, 'ocr_eval/data/ocr_results/tesseract_text_extraction.pkl')
+    results_path = os.path.join(base_dir, 'doceval/data/ocr_results/tesseract_text_extraction.pkl')
     
     trocr_text_extraction = TesseractTextExtraction(model_name=model_name, evals=evals, results_path=results_path)
     

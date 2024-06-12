@@ -1,4 +1,4 @@
-from ocr_eval.models.base_model import OCR
+from doceval.models.base_model import OCR
 from surya.detection import batch_text_detection
 from surya.layout import batch_layout_detection
 from surya.model.detection.segformer import load_model as load_detection_model
@@ -14,10 +14,10 @@ import string
 
 import os
 import pickle
-base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval")
+base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval")
 
 class SuryaTextExtraction(OCR):
-    def __init__(self, model_name: str, evals: list, results_path=os.path.join(base_dir, 'ocr_eval/data/ocr_results/surya_text_extraction.pkl'), write_output=True):
+    def __init__(self, model_name: str, evals: list, results_path=os.path.join(base_dir, 'doceval/data/ocr_results/surya_text_extraction.pkl'), write_output=True):
         super().__init__(model_name=model_name, evals=evals, results_path=results_path, write_output=write_output)
 
     def load_models(self):

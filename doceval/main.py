@@ -47,7 +47,7 @@ LAYOUT_MAPPING_STANDARD= {
     "Text": {"publaynet": ["Text", "List"], "Surya": ["Text", "Formula", "Footnote", "Caption", "List-item"], "Azure": [None, "formulaBlock", "footnote"]},
     "Titles": {"publaynet": ["Title"], "Surya": ["Section-header", "Title"], "Azure": ["title", 'sectionHeading']}}
 
-base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
+base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval/doceval")
 
 def extract_number(s):
     return int(''.join(filter(str.isdigit, s)))

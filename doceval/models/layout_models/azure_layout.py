@@ -1,15 +1,15 @@
-from ocr_eval.models.base_model import OCR
+from doceval.models.base_model import OCR
 
 from azure.ai.documentintelligence import DocumentIntelligenceClient
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.documentintelligence.models import AnalyzeResult
-from ocr_eval.utils.utils import polygon_to_bbox, bbox_inch_to_dots, bbox_inch_to_pix, bbox_in_figure
+from doceval.utils.utils import polygon_to_bbox, bbox_inch_to_dots, bbox_inch_to_pix, bbox_in_figure
 
 import os
 import pickle
 import pdb
 import time
-base_dir = os.path.join(os.getcwd().split("OCR_Eval")[0], "OCR_Eval/ocr_eval")
+base_dir = os.path.join(os.getcwd().split("DocEval")[0], "DocEval/doceval")
 
 class AzureLayout(OCR):
     def __init__(self, model_name: str, evals: list, layout_mapping={}, checkpoint_paths = '', results_path=os.path.join(base_dir, 'data/ocr_results/azure_results.pkl'), write_output=True):
