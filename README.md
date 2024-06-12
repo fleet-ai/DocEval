@@ -32,7 +32,7 @@ To add a new dataset:
 
 - Convert the dataset to the canonical form in the evaluation class.
 
-## Other Potential Models to Test
+### Other Potential Models to Test
 
 Consider testing the following models:
 
@@ -47,7 +47,7 @@ Consider testing the following models:
 - [OCR-D](https://ocr-d.de/)
 - [Calamari OCR](https://github.com/Calamari-OCR/calamari)
 
-## Datasets to Test
+### Datasets to Test
 
 Consider testing the following datasets:
 
