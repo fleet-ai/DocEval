@@ -128,7 +128,7 @@ def run_table_detection():
                 raise ValueError(f"Metric {metric} not supported")
     
 
-    table_detection_eval = TableDetectionEvaluation(model_names, metrics, dataset_gt_name,
+    table_detection_eval = TableDetectionEvaluation(model_names, metrics, dataset_gt_name, dataset_root_dir,
                                                     max_doc, batch_size, num_workers, eval_pool_size, ocr_result_paths, debug = visualize)
     
     print("Preparing models...")
@@ -163,7 +163,7 @@ def run_table_extraction():
         for metric in metrics:
             if metric not in SUPPORTED_METRICS["table_extraction"]:
                 raise ValueError(f"Metric {metric} not supported")
-    table_eval = TableExtractionEvaluation(model_names, metrics, dataset_gt_name, max_doc, batch_size, num_workers, eval_pool_size, ocr_result_paths, debug = visualize)
+    table_eval = TableExtractionEvaluation(model_names, metrics, dataset_gt_name, dataset_root_dir, max_doc, batch_size, num_workers, eval_pool_size, ocr_result_paths, debug = visualize)
     print("Preparing models...")
     table_eval.prepare_models()
     print("Running evaluation...")

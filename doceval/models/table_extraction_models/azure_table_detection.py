@@ -35,6 +35,7 @@ class AzureTableDetection:
         self.results_path = results_path
         self.debug_save_dir = debug_save_dir
         self.args = self.create_args()
+        print(self.dataset_root)
 
     def create_args(self):
         cmd_args = argparse.Namespace()

@@ -107,15 +107,16 @@ structure_class_thresholds = {
 }
 
 class TableExtractionEvaluation:
-    def __init__(self, model_names,  metrics, dataset_gt_name, test_max_size, batch_size, num_workers, eval_pool_size, results_path, debug = True, debug_save_dir=os.path.join(base_dir, 'results/benchmark/table_extraction')):
+    def __init__(self, model_names,  metrics, dataset_gt_name, dataset_root_dir, test_max_size, batch_size, num_workers, eval_pool_size, results_path, debug = True, debug_save_dir=os.path.join(base_dir, 'results/benchmark/table_extraction')):
         self.model_names = model_names
         self.metrics = metrics
         self.models = {}
         self.dataset_gt_name = dataset_gt_name
+        self.dataset_root_dir = dataset_root_dir
         self.data_type = "structure"
         if dataset_gt_name == "fintabnet":
-            self.dataset_root = os.path.join(base_dir, "data/table_extraction_bench/fintabnet/fintabnet_processed/FinTabNet.c_Image_Structure_PASCAL_VOC")
-            self.table_words_dir = os.path.join(base_dir, 'data/table_extraction_bench/fintabnet/fintabnet_processed/FinTabNet.c_Image_Table_Words_JSON')
+            self.dataset_root = os.path.join(self.dataset_root_dir, "fintabnet_processed/FinTabNet.c_Image_Structure_PASCAL_VOC")
+            self.table_words_dir = os.path.join(self.dataset_root_dir, 'fintabnet_processed/FinTabNet.c_Image_Table_Words_JSON')
         else:
             raise ValueError("Invalid dataset_gt_name")
         if "Table_Transformer" in self.model_names:

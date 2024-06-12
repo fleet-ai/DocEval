@@ -35,6 +35,9 @@ class AzureLayout(OCR):
         print("No Azure layout results found. Generating Azure layout results on documents...")
         azure_results = []
         total_time = 0
+        if len(document_paths) == 0:
+            raise ValueError("No document paths found")
+
         for file_path in document_paths:
             start_time = time.time()
             with open(file_path, "rb") as f:
@@ -154,7 +157,6 @@ class AzureLayout(OCR):
                     if page not in results_dict[idx][label].keys():
                         results_dict[idx][label][page] = []
                     paragraph_bbox = polygon_to_bbox(paragraph_polygon)
-                    #pdb.set_trace()
                     if results_unit == "dots":
                         bbox = bbox_inch_to_dots(paragraph_bbox)
                     elif results_unit == "pix":

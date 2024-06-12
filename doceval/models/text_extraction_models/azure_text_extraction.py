@@ -36,6 +36,8 @@ class AzureTextExtraction(OCR):
             return self.load_ocr_results()
         print("No Azure layout results found. Generating Azure OCR results on documents...")
         azure_results = []
+        if len(document_paths) == 0:
+            raise ValueError("No document paths found")
         for file_path in document_paths:
             with open(file_path, "rb") as f:
                 poller = azure_model.begin_analyze_document(

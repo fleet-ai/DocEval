@@ -39,13 +39,31 @@ class SuryaLayout(OCR):
         print("No Surya layout results found. Generating Surya layout results on documents...")
         det_model, det_processor, model, processor = models
         if document_paths and not documents:
-            print(document_paths)
             documents = [convert_from_path(path, dpi=72) for path in document_paths]
+            
         surya_layout_results = []
+        if len(documents) == 0:
+            raise ValueError("No documents found")
+
+        # Flatten the list of lists and keep track of page counts
+        flat_documents = []
+        page_counts = []
         for document in documents:
-            line_predictions = batch_text_detection(document, det_model, det_processor)
-            layout_predictions = batch_layout_detection(document, model, processor, line_predictions)
-            surya_layout_results.append(layout_predictions)    
+            flat_documents.extend(document)
+            page_counts.append(len(document))
+
+        # Process the flattened list of images
+        flat_line_predictions = batch_text_detection(flat_documents, det_model, det_processor)
+        flat_layout_predictions = batch_layout_detection(flat_documents, model, processor, flat_line_predictions)
+
+        # Convert the flat layout predictions back to a list of lists
+        start_index = 0
+        for page_count in page_counts:
+            end_index = start_index + page_count
+            document_layout_predictions = flat_layout_predictions[start_index:end_index]
+            surya_layout_results.append(document_layout_predictions)
+            start_index = end_index
+            
         if self.write_output:
             if self.results_path == '':
                 raise ValueError("No results path provided to write the layout predictions to")

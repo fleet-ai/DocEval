@@ -12,7 +12,7 @@ import json
 import os
 import datasets
 import pdb
-
+from tqdm import tqdm
 
 #NOTE Check that datasets are identical
 
@@ -110,12 +110,11 @@ class LayoutEvaluation():
         for model_name in self.model_names:
             running_average[model_name] = {}
             self.eval_results[model_name] = {}
-            print("Running evaluation on Model {}".format(model_name))
             for label in self.layout_mapping.keys():
                 running_average[model_name][label] = {}
                 for metric in self.metrics:
                     running_average[model_name][label][metric] = {'total metric': 0, 'total bboxes': 0}
-            for idx, label_document in self.dataset_gt.items():
+            for idx, label_document in tqdm(self.dataset_gt.items(), desc=f"Evaluating {model_name}"):
                 self.eval_results[model_name][idx] = {}
                 for label, document in label_document.items():
                     self.eval_results[model_name][idx][label] = {}
@@ -126,17 +125,27 @@ class LayoutEvaluation():
                         except:
                             raise Exception("Model {} did not return a result for document {} page {}".format(model_name, idx, page))
                         gt_bboxes = [bbox['coordinates'] for bbox in bboxes]
-                        for metric in self.metrics:
-                            if metric in ["precision", "recall"]:
-                                self.eval_results[model_name][idx][label][page][metric] = {}
+                        if self.metrics == ["precision", "recall"]:
                                 metric_val = precision_recall(model_bboxes, gt_bboxes, penalize_double=False)
                                 weight = len(gt_bboxes)
-                                self.eval_results[model_name][idx][label][page][metric]['val'] = metric_val[metric]
-                                self.eval_results[model_name][idx][label][page]['weight'] = weight
-                                running_average[model_name][label][metric]['total metric'] += metric_val[metric] * weight
-                                running_average[model_name][label][metric]['total bboxes'] += weight 
-                            else:
-                                raise ValueError(f"Metric {metric} not supported")
+                                for metric in self.metrics:
+                                    self.eval_results[model_name][idx][label][page][metric] = {}
+                                    self.eval_results[model_name][idx][label][page][metric]['val'] = metric_val[metric]
+                                    self.eval_results[model_name][idx][label][page]['weight'] = weight
+                                    running_average[model_name][label][metric]['total metric'] += metric_val[metric] * weight
+                                    running_average[model_name][label][metric]['total bboxes'] += weight 
+                        else:
+                            for metric in self.metrics:
+                                if metric in ["precision", "recall"]:
+                                    self.eval_results[model_name][idx][label][page][metric] = {}
+                                    metric_val = precision_recall(model_bboxes, gt_bboxes, penalize_double=False)
+                                    weight = len(gt_bboxes)
+                                    self.eval_results[model_name][idx][label][page][metric]['val'] = metric_val[metric]
+                                    self.eval_results[model_name][idx][label][page]['weight'] = weight
+                                    running_average[model_name][label][metric]['total metric'] += metric_val[metric] * weight
+                                    running_average[model_name][label][metric]['total bboxes'] += weight 
+                                else:
+                                    raise ValueError(f"Metric {metric} not supported")
                 #pdb.set_trace()
                 for label in self.layout_mapping.keys():
                     for metric in self.metrics:
