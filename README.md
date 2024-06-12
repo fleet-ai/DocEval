@@ -1,6 +1,6 @@
-# OCR Evaluation Framework
+# Document Understanding Evaluation Framework
 
-This repository provides a structured framework for evaluating the performance of OCR (Optical Character Recognition) models on various tasks including Layout, Text Extraction, Table Detection, and Table Extraction. The current models supported are the Azure Layout model, Surya model, and the Table Transformer model from Microsoft Research. 
+This repository provides a structured framework for evaluating the performance of Document Understanding models on various tasks including Layout, Text Extraction (OCR), Table Detection, and Table Extraction. The current models supported are the Azure Layout model, Surya model, and the Table Transformer model from Microsoft Research. 
 
 <p float="left">
   <img src="https://github.com/fleet-ai/OCR_Eval/blob/main/read_me_images/layout.png" width="400" />
@@ -8,7 +8,7 @@ This repository provides a structured framework for evaluating the performance o
 </p>
 
 
-OCR on documents is fundamental to the functioning of many apps. Given the high costs associated with commercial OCR models and the existence of accurate open-source models, benchmarking OCR models on a variety of tasks and datasets is important in helping organizations optimize the performance of their systems while managing their resources effectively. Evaluating the performance of OCR models can be challenging due to the lack of standardized output formats and the variety of tasks involved. This repository aims to address these challenges by providing a canonical structure for evaluating OCR models across different tasks, datasets, and metrics.
+OCR on documents is fundamental to the functioning of many apps. Given the high costs associated with commercial models and the existence of accurate open-source models, benchmarking document understanding models on a variety of tasks and datasets is important in helping organizations optimize the performance of their systems while managing their resources effectively. Evaluating the performance of document understanding models can be challenging due to the lack of standardized output formats and the variety of tasks involved. This repository aims to address these challenges by providing a canonical structure for evaluating models across different tasks, datasets, and metrics.
 
 ## Contributing
 
@@ -64,11 +64,11 @@ Looking for other text extraction datasets. There are a number of datasets for l
 The framework currently supports the following models:
 
 ### Azure
-The Azure Layout model is part of Azure Document Intelligence, and it performs all of the above tasks. It does not allow for a separation of tasks and costs $10 per 1000 pages.
+The Azure Layout model is part of Azure Document Intelligence, and it performs all of the above tasks. It does not allow for a separation of tasks.
 #### Tasks: Layout Analysis, Text Extraction, Table Detection, Table Extraction
 
 ### Surya
-[Surya](https://github.com/VikParuchuri/surya) is an open-source OCR model (weights are conditionally licenced for commercial use depending on revenue) developed by Vik Paruchuri. It offers accurate text extraction and layout analysis capabilities.
+[Surya](https://github.com/VikParuchuri/surya) is a toolkit of open-source models (weights are conditionally licenced for commercial use depending on revenue) developed by Vik Paruchuri. It offers accurate text extraction and layout analysis capabilities.
 #### Tasks: Layout Analysis, Text Extraction
 
 ### Table Transformer
@@ -218,6 +218,11 @@ Table detection aims to locate and identify the presence of tables within a docu
 Table extraction focuses on extracting the content and structure of identified tables. This task involves recognizing table cells, rows, columns, and their relationships. Specifically, we focus on three aspects of table extraction detailed in [GriTS](https://arxiv.org/abs/2203.12555): location, topology, and content. Cell topology recognition considers the layout of the cells, specifically the rows and columns each cell occupies over a two-dimensional grid. Cell content recognition considers the layout of cells and the text content of
 each cell. Cell location recognition considers the layout of cells and the absolute coordinates of each cell within a document. This is the hardest output to standardize since not all models even extract table information details like the row and column span of a cell, models can make different decisions on what consistutes a row or column (both of which may be correct interpretations), and models differ in the size of the table cells they predict. Some models will default to predicting a grid while others will predict smaller bboxes around the cell content. Aligning cells in such a way that allows for a fair comparison of table contents is also challenging. The only dataset currently supported is FinTabNet from IBM. Follow directions [here](https://github.com/microsoft/table-transformer?tab=readme-ov-file) to download. I only downloaded the test set.
 
+
+## To Dos
+- Make evaluations faster
+- Improve table extraction
+- Add models, datasets, and evaluation tasks
 
 ## Acknowledgements
 This repo builds upon work in [Surya](https://github.com/VikParuchuri/surya), and [Microsoft Table Transformer](https://github.com/microsoft/table-transformer?tab=readme-ov-file)

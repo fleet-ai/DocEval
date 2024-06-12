@@ -1,6 +1,5 @@
 from ..models.layout_models.azure_layout import AzureLayout
 from ..models.layout_models.surya_layout import SuryaLayout
-from ..models.layout_models.azure_layout import AzureLayout
 
 from surya.settings import settings
 from ..utils.utils import draw_color_bboxes, precision_recall
@@ -96,6 +95,7 @@ class LayoutEvaluation():
     def run_eval(self):
         #pdb.set_trace()
         running_average = {}
+        
         for model_name in self.model_names:
             self.eval_results[model_name + "_average"] = {}
             self.eval_results[model_name + "_average"]["count"] = {}
